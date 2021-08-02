@@ -13,20 +13,13 @@ import {
   Button,
   Platform,
   StatusBar,
+  Dimensions,
 } from "react-native";
 
 export default function App() {
-  const handlePress = () => console.log("Text is Pressed");
-  const handleBtnPress = () =>
-    Alert.alert("Title", "Message", [
-      { text: "Yes", onPress: () => console.log("YES") },
-      { text: "No", onPress: () => console.log("NO") },
-    ]);
-  return (
-    <SafeAreaView style={styles.container}>
-      <Button title="Click Me!" onPress={handleBtnPress} color="dodgerblue" />
-    </SafeAreaView>
-  );
+  console.log(Dimensions.get("screen"));
+  console.log(StatusBar.currentHeight);
+  return <SafeAreaView style={styles.safeAreaView}></SafeAreaView>;
 }
 
 const styles = StyleSheet.create({
@@ -35,12 +28,10 @@ const styles = StyleSheet.create({
     backgroundColor: "orange",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
-  image: {
-    width: 100,
-    height: 100,
-    margin: 20,
-  },
   safeAreaView: {
-    backgroundColor: "orange",
+    backgroundColor: "dodgerblue",
+    width: 150,
+    height: 70,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
